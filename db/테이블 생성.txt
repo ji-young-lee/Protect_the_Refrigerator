@@ -1,0 +1,147 @@
+ 외래키 때문에 테이블 생성 순서 주의
+ 냉장고 테이블과 라즈베리파이 테이블 합치면서
+	냉장고 번호 속성 삭제 및 소유에 라즈베리파이 번호 사용
+ boolean대신 0,1만 되는 tinyint 사용
+촬영된 식품의 유통기한은 현재시각 + 식품 테이블의 유통기한을 저장
+ 레시피 활용 안할시 recipe 테이블 아래쪽 테이블들 사용안함
+gender 는 'M', 'F'만
+difficulty는 easy, normal, hard
+
+create database capstone;
+use capstone;
+
+일단 pytest에 올림
+use pytest;
+
+create table members(
+	id int not null,
+	userId varchar(50),
+	password varchar(50),
+	email varchar(50),
+	CONSTRAINT PK_memberInfo PRIMARY KEY (id)
+);
+
+create table refrigerator(
+	raspberryPiID varchar(50) not null,
+	raspberryPiPW varchar(50),
+	name varchar(50),
+	location varchar(50),
+	CONSTRAINT PK_refrigerator PRIMARY KEY (raspberryPiID)
+);
+
+create table possession(
+	email varchar(50) not null,
+	raspberryPiID varchar(50) not null,
+	CONSTRAINT PK_possession PRIMARY KEY (email, raspberryPiID)
+);
+
+create table camera(
+	cameraID varchar(50) not null,
+	raspberryPiID varchar(50) not null,
+	CONSTRAINT PK_camera PRIMARY KEY (cameraID)
+);
+
+create table photo(
+	photoID varchar(50) not null,
+	cameraID varchar(50) not null,
+	data longblob,
+	analyzedData longblob,
+	CONSTRAINT PK_photo PRIMARY KEY (photoID)
+);
+
+create table food(
+	foodName varchar(50) not null,
+	shelfLife int,
+	CONSTRAINT PK_food PRIMARY KEY (foodName)
+);
+
+create table photographedFood(
+	photoID varchar(50) not null,
+	count int not null,
+	foodName varchar(50) not null,
+	shelfLife int,
+	inday varchar(50),
+	x1 int,
+	x2 int,
+	y1 int,
+	y2 int,
+	CONSTRAINT PK_photographedFood PRIMARY KEY (photoID, count)
+);
+
+create table recipe(
+	recipeName varchar(50) not null,
+	data longblob,
+	process varchar(1000),
+	recipeTime varchar(50),
+	difficulty varchar(50),
+	Classification varchar(50),
+	method varchar(50),
+	CONSTRAINT PK_recipe PRIMARY KEY (recipeName)
+);
+
+create table ingredients(
+	recipeName varchar(50) not null,
+	foodName varchar(50) not null,
+	meterage varchar(50),
+	CONSTRAINT PK_ingredients PRIMARY KEY (recipeName, foodName)
+);
+
+create table excludedFood(
+	email varchar(50) not null,
+	foodName varchar(50) not null,
+	CONSTRAINT PK_excludedFood PRIMARY KEY (email, foodName)
+);
+
+create table recipeScore(
+	email varchar(50) not null,
+	recipeName varchar(50) not null,
+	score int,
+	CONSTRAINT PK_excludedRecipe PRIMARY KEY (email, recipeName)
+);
+
+create table eatenFood(
+	photoID varchar(50) not null,
+	foodName varchar(50) not null,
+	CONSTRAINT PK_eatenFood PRIMARY KEY (photoID, foodName)
+);
+
+create table authenMail(
+	email varchar(50) not null,
+	sendTime varchar(50) not null,
+	authenNum int,
+	CONSTRAINT PK_authenMail PRIMARY KEY (email, sendTime)
+);
+
+create table recommendMail(
+	email varchar(50) not null,
+	sendTime varchar(50) not null,
+	recipeName varchar(50),
+	CONSTRAINT PK_eatenFood PRIMARY KEY (email, sendTime)
+);
+
+create table shelfLifeMail(
+	email varchar(50) not null,
+	foodName varchar(50) not null,
+	shelfLife int,
+	inday varchar(50)
+	CONSTRAINT PK_shelfLifeMail PRIMARY KEY (email, sendTime)
+);
+
+create table images(
+	num int auto_increment primary key,
+	data longblob
+);
+
+create table user(
+	userID varchar(50),
+	userPassword varchar(50),
+	userEmail varchar(50),
+	userEmailHash varchar(50),
+	userEmailChecked varchar(50)
+);
+
+create table recommendRecipe(
+	email varchar(50) not null,
+	recipeName varchar(50) not null,
+	CONSTRAINT PK_recommendRecipe PRIMARY KEY (email, recipeName)
+);
