@@ -62,19 +62,19 @@ public class RecipeDao {
 
 		String sqlStatement = "select * from recipe where recipeName=?";
 
-		// ÇÏ³ªÀÇ °´Ã¼¸¦ ÀĞ¾îµéÀÌ´Â °ÍÀÌ±â¿¡ query°¡ ¾Æ´Ñ queryForObject . new Object[] {id}´Â
-		// ?¿¡ÇØ´çµÇ´Âplaceholder¸¦ ÁöÁ¤ÇØÁà¾ßÇÏ±â¿¡ . 3¹øÂ°ÀÎÀÚ rowmappper´Â Á¸³ª±è
+		// í•˜ë‚˜ì˜ ê°ì²´ë¥¼ ì½ì–´ë“¤ì´ëŠ” ê²ƒì´ê¸°ì— queryê°€ ì•„ë‹Œ queryForObject . new Object[] {id}ëŠ”
+		// ?ì—í•´ë‹¹ë˜ëŠ”placeholderë¥¼ ì§€ì •í•´ì¤˜ì•¼í•˜ê¸°ì— . 3ë²ˆì§¸ì¸ì rowmappperëŠ” ì¡´ë‚˜ê¹€
 		return jdbcTemplate.query(sqlStatement, new Object[] { recipeName }, new RowMapper<Recipe>() {
 
 			@Override
-			public Recipe mapRow(ResultSet rs, int rowNum) throws SQLException { // mapRow¶ó°íÇÏ´Â ¸Ş¼Òµå ¸¸µé¾îÁü.¿©±â¼­ ·¹ÄÚµå¸¦ °´Ã¼·Î //
+			public Recipe mapRow(ResultSet rs, int rowNum) throws SQLException { // mapRowë¼ê³ í•˜ëŠ” ë©”ì†Œë“œ ë§Œë“¤ì–´ì§.ì—¬ê¸°ì„œ ë ˆì½”ë“œë¥¼ ê°ì²´ë¡œ //
 
 				Recipe recipe = new Recipe();
 
 				String process = new String(rs.getString("process"));
 
 				ArrayList<String> list = new ArrayList<String>();
-				String[] splitStr = process.split("\\$");  //Æ¯¼ö¹®ÀÚ ¾Õ¿¡´Â \\³Ö¾î¾ß splitµÊ
+				String[] splitStr = process.split("\\$");  //íŠ¹ìˆ˜ë¬¸ì ì•ì—ëŠ” \\ë„£ì–´ì•¼ splitë¨
 
 				for (int i = 0; i < splitStr.length; i++) {
 
@@ -84,7 +84,7 @@ public class RecipeDao {
 					// request.setAttribute("tmp",tmp);
 					// System.out.println(tmp);
 				//	System.out.println(splitStr[i]);
-					// System.out.println(list.get(i)); //Æ¯Á¤ index°ª ÃßÃâ
+					// System.out.println(list.get(i)); //íŠ¹ì • indexê°’ ì¶”ì¶œ
 				//	String element = (String) list.get(i);
 				//	recipe.setElement(element);
 					// recipe.setList(list);
@@ -121,7 +121,7 @@ public class RecipeDao {
 				}
 			
 
-				// ¾Õ¿¡ lombokÀ» »ç¿ëÇØ¼­ getter,setter¸¸µé¾î³õ¾ÒÀ½
+				// ì•ì— lombokì„ ì‚¬ìš©í•´ì„œ getter,setterë§Œë“¤ì–´ë†“ì•˜ìŒ
 
 				String data = new String(rs.getBytes("data"));
 
@@ -178,12 +178,12 @@ public class RecipeDao {
 	public List<Recipe> getScoreById(String recipeName) {
 		String sqlStatement = "select * from recipeScore where email='4' and recipeName=?";
 		//String sqlStatement = "select * from recipeScore where  recipeName=?";
-		// ÇÏ³ªÀÇ °´Ã¼¸¦ ÀĞ¾îµéÀÌ´Â °ÍÀÌ±â¿¡ query°¡ ¾Æ´Ñ queryForObject . new Object[] {id}´Â
-		// ?¿¡ÇØ´çµÇ´Âplaceholder¸¦ ÁöÁ¤ÇØÁà¾ßÇÏ±â¿¡ . 3¹øÂ°ÀÎÀÚ rowmappper´Â Á¸³ª±è
+		// í•˜ë‚˜ì˜ ê°ì²´ë¥¼ ì½ì–´ë“¤ì´ëŠ” ê²ƒì´ê¸°ì— queryê°€ ì•„ë‹Œ queryForObject . new Object[] {id}ëŠ”
+		// ?ì—í•´ë‹¹ë˜ëŠ”placeholderë¥¼ ì§€ì •í•´ì¤˜ì•¼í•˜ê¸°ì— . 3ë²ˆì§¸ì¸ì rowmappperëŠ” ì¡´ë‚˜ê¹€
 		return jdbcTemplate.query(sqlStatement, new Object[] { recipeName }, new RowMapper<Recipe>() {
 
 			@Override
-			public Recipe mapRow(ResultSet rs, int rowNum) throws SQLException { // mapRow¶ó°íÇÏ´Â ¸Ş¼Òµå ¸¸µé¾îÁü.¿©±â¼­ ·¹ÄÚµå¸¦ °´Ã¼·Î //
+			public Recipe mapRow(ResultSet rs, int rowNum) throws SQLException { // mapRowë¼ê³ í•˜ëŠ” ë©”ì†Œë“œ ë§Œë“¤ì–´ì§.ì—¬ê¸°ì„œ ë ˆì½”ë“œë¥¼ ê°ì²´ë¡œ //
 
 				Recipe recipe = new Recipe();
 

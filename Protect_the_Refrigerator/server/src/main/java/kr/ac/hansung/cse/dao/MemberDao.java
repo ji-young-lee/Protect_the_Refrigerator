@@ -4,10 +4,10 @@ import kr.ac.hansung.cse.vo.MemberVO;
 
 public interface MemberDao {
 
-	//È¸¿ø°¡ÀÔ
+	//íšŒì›ê°€ì…
 	public void signup(MemberVO vo) throws Exception;
 	
-	//·Î±×ÀÎ
+	//ë¡œê·¸ì¸
 	//public MemberVO login(MemberVO vo) throws Exception;
 
 }

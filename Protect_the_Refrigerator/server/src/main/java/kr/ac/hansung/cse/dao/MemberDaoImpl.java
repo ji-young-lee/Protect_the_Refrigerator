@@ -10,7 +10,7 @@ import kr.ac.hansung.cse.vo.MemberVO;
 @Repository
 public class MemberDaoImpl implements MemberDao {
 
-	//х╦©Ь╟║ют
+	//х╦О©╫О©╫О©╫О©╫О©╫О©╫
 	//@javax.inject.Inject()
 	@Inject
 	SqlSession sql;

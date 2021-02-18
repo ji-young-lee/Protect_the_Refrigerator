@@ -21,7 +21,7 @@ public class JqueryController {
 	UserService userService;
 	
 	@RequestMapping(value="jquery/logins",method = RequestMethod.POST)
-	@ResponseBody	// jsonÀ¸·Î ÀÀ´äÇØÁÖ´Â ¾î³ëÅ×ÀÌ¼Ç
+	@ResponseBody	// jsonìœ¼ë¡œ ì‘ë‹µí•´ì£¼ëŠ” ì–´ë…¸í…Œì´ì…˜
 	public int login(Members members,HttpSession session) {
 		int result = 0; 
 		String col = null;

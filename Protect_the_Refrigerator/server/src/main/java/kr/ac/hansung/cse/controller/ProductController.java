@@ -11,24 +11,24 @@ import kr.ac.hansung.cse.model.Product;
 import kr.ac.hansung.cse.service.ProductService;
 
 @Controller
-//controller¶ó´Â ÆĞÅ°Áö¸¦ Âß ½ºÄµÇÏ´Ù°¡ @controller°¡ ÀÖÀ¸¸é Å¬·¡½º¸¦ ºóÀ¸·Î ÀÚµ¿ÀûÀ¸·Î µî·ÏÇØÁÜ. ±×·¸°ÔÇÏ±âÀ§ÇØ servlet-context.xml¿¡¼­ component scan¿¡¼­
-//basic package¸¦ kr.ac.hansung.cse.controller¶ó°í ÇÔ
-public class ProductController { // controller -> service -> dao È£Ãâ
+//controllerë¼ëŠ” íŒ¨í‚¤ì§€ë¥¼ ì­‰ ìŠ¤ìº”í•˜ë‹¤ê°€ @controllerê°€ ìˆìœ¼ë©´ í´ë˜ìŠ¤ë¥¼ ë¹ˆìœ¼ë¡œ ìë™ì ìœ¼ë¡œ ë“±ë¡í•´ì¤Œ. ê·¸ë ‡ê²Œí•˜ê¸°ìœ„í•´ servlet-context.xmlì—ì„œ component scanì—ì„œ
+//basic packageë¥¼ kr.ac.hansung.cse.controllerë¼ê³  í•¨
+public class ProductController { // controller -> service -> dao í˜¸ì¶œ
 
 	@Autowired
 	private ProductService productService;
 
 	
-	  @RequestMapping("/infridge") // requestmappingÀ¸·Î ÀÇÇØ¼­ /product¶ó°íÇÏ´Â url·Î µé¾î¿À´Â request°¡ µé¾î¿À°ÔµÇ¸é ÀÌ ¸Ş¼Òµå°¡ ¼öÇàµÊ 
+	  @RequestMapping("/infridge") // requestmappingìœ¼ë¡œ ì˜í•´ì„œ /productë¼ê³ í•˜ëŠ” urlë¡œ ë“¤ì–´ì˜¤ëŠ” requestê°€ ë“¤ì–´ì˜¤ê²Œë˜ë©´ ì´ ë©”ì†Œë“œê°€ ìˆ˜í–‰ë¨ 
 	  public String getProducts(Model model) {
-	  List<Product> products = productService.getProducts(); // service layer¿¡ ÀÖ´ÂetProducts()¸¦ È£ÃâÇØ¼­ ±× ProductÀÇ ListÇüÀ»°¡Á®¿È.±×·³ products¸¦ °¡Á®´Ù
+	  List<Product> products = productService.getProducts(); // service layerì— ìˆëŠ”etProducts()ë¥¼ í˜¸ì¶œí•´ì„œ ê·¸ Productì˜ Listí˜•ì„ê°€ì ¸ì˜´.ê·¸ëŸ¼ productsë¥¼ ê°€ì ¸ë‹¤
 	
-	  model.addAttribute("products", products); // ¿©±â ¿À¸¥ÂÊ products¿¡ ÀúÀåÇÔ. Å°°ªÀº"products"ÀÌ°í model¿¡´Ù°¡ ÀúÀåÇØµÎ°í
+	  model.addAttribute("products", products); // ì—¬ê¸° ì˜¤ë¥¸ìª½ productsì— ì €ì¥í•¨. í‚¤ê°’ì€"products"ì´ê³  modelì—ë‹¤ê°€ ì €ì¥í•´ë‘ê³ 
 	  
 	  List<Product> photo = productService.getPhoto();
 	  model.addAttribute("photo", photo);
 	  
-	  return "infridge"; // view's logical name. products.jspÆÄÀÏ·Î ³Ñ°ÜÁÖ¸é µÇ¸éÀº ÀÌ ºä¿¡¼­ ¸ğµ¨·ÎÀúÀåµÈ productsÀÇ °ªÀ» Ãâ·ÂÇØÁÖ¸éµÊ 
+	  return "infridge"; // view's logical name. products.jspíŒŒì¼ë¡œ ë„˜ê²¨ì£¼ë©´ ë˜ë©´ì€ ì´ ë·°ì—ì„œ ëª¨ë¸ë¡œì €ì¥ëœ productsì˜ ê°’ì„ ì¶œë ¥í•´ì£¼ë©´ë¨ 
 	  }
 	 
 

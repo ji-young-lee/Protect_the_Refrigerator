@@ -24,12 +24,12 @@ public class ProductDao {
 	private JdbcTemplate jdbcTemplate;
 
 	@Autowired
-	// µ¥ÀÌÅÍ¼Ò½º ÁÖÀÔ¹Ş´Â´Ù => dao-context.xml¿¡ º¸¸é datasource¶ó´Â beanÀ» µî·ÏÇØ³õÀ½. ±× datasource°¡
-	// ¿©±â¿¡ ÁÖÀÔµÊ
-	public void setDataSource(DataSource dataSource) { // setter¸Ş¼ÒµåÀÇ °ªÀÌ ÀÎÀÚ·Î¼­ dataSource¿¡ µé¾î°¨.ÀÇÁ¸¼ºÁÖÀÔ
-		jdbcTemplate = new JdbcTemplate(dataSource); // jdbcTemplate¿¡ ´ëÇÑ °´Ã¼»ı¼º
-		// datasource¸¦ »ç¿ëÇØ¼­ jdbcTemplate¶ó´Â Å¬·¡½º¸¦ »õ·Ó°Ô ¸¸µê
-		// ÀÌ °á°ú¸¦ ¸â¹öº¯¼ö¿¡ Áı¾î³ÖÀ½ dao´Â jdbc template¸¦ »ç¿ëÇÏ±â¶§¹®¿¡ jdbcTemplate¿¡ ´ëÇÑ °´Ã¼¸¦ »ı¼ºÇÏ¿´À½
+	// ë°ì´í„°ì†ŒìŠ¤ ì£¼ì…ë°›ëŠ”ë‹¤ => dao-context.xmlì— ë³´ë©´ datasourceë¼ëŠ” beanì„ ë“±ë¡í•´ë†“ìŒ. ê·¸ datasourceê°€
+	// ì—¬ê¸°ì— ì£¼ì…ë¨
+	public void setDataSource(DataSource dataSource) { // setterë©”ì†Œë“œì˜ ê°’ì´ ì¸ìë¡œì„œ dataSourceì— ë“¤ì–´ê°.ì˜ì¡´ì„±ì£¼ì…
+		jdbcTemplate = new JdbcTemplate(dataSource); // jdbcTemplateì— ëŒ€í•œ ê°ì²´ìƒì„±
+		// datasourceë¥¼ ì‚¬ìš©í•´ì„œ jdbcTemplateë¼ëŠ” í´ë˜ìŠ¤ë¥¼ ìƒˆë¡­ê²Œ ë§Œë“¦
+		// ì´ ê²°ê³¼ë¥¼ ë©¤ë²„ë³€ìˆ˜ì— ì§‘ì–´ë„£ìŒ daoëŠ” jdbc templateë¥¼ ì‚¬ìš©í•˜ê¸°ë•Œë¬¸ì— jdbcTemplateì— ëŒ€í•œ ê°ì²´ë¥¼ ìƒì„±í•˜ì˜€ìŒ
 	}
 
 	public List<Product> getPhoto() {
@@ -43,7 +43,7 @@ public class ProductDao {
 
 				Product product = new Product();
 
-				String photoID = new String(rs.getString("photoID")); // int Å¸ÀÔÀº getInt,
+				String photoID = new String(rs.getString("photoID")); // int íƒ€ì…ì€ getInt,
 
 				String decodedString = new String(rs.getBytes("analyzedData"));
 
@@ -60,7 +60,7 @@ public class ProductDao {
 	public List<Product> getProducts() {
 
 		// String sqlStatement = "select * from photo order by photoID desc limit 1" ;
-		// // ³»¸²Â÷¼ø Á¤·Ä(desc):°ªÀÌ Å«°ÍºÎÅÍÃâ·Â <->asc
+		// // ë‚´ë¦¼ì°¨ìˆœ ì •ë ¬(desc):ê°’ì´ í°ê²ƒë¶€í„°ì¶œë ¥ <->asc
 		// String sqlStatement = "(select * from photo order by photoID desc limit 1)
 		// union (select * from photographedFood where photoID=?) ";
 		// String sqlStatement = "select * from photo join photographedFood on
@@ -79,16 +79,16 @@ public class ProductDao {
 
 				Product product = new Product();
 
-				// photoID date Çüº¯È¯
+				// photoID date í˜•ë³€í™˜
 				String photoID = new String(rs.getString("photoID"));
 				String[] photoID_date = photoID.split("_");
 
-				String now1 = photoID_date[0]; // ³â
-				String now2 = photoID_date[1]; // ¿ù
-				String now3 = photoID_date[2]; // ÀÏ
-				String now4 = photoID_date[3]; // ½Ã
-				String now5 = photoID_date[4]; // ºĞ
-				String now6 = photoID_date[5]; // ÃÊ
+				String now1 = photoID_date[0]; // ë…„
+				String now2 = photoID_date[1]; // ì›”
+				String now3 = photoID_date[2]; // ì¼
+				String now4 = photoID_date[3]; // ì‹œ
+				String now5 = photoID_date[4]; // ë¶„
+				String now6 = photoID_date[5]; // ì´ˆ
 
 				if (now2.length() == 1) {
 					now2 = 0 + now2;
@@ -105,8 +105,8 @@ public class ProductDao {
 				if (now6.length() == 1) {
 					now6 = 0 + now6;
 				}
-				// String now = now1 + "³â" + now2 + "¿ù" + now3 + "ÀÏ" + now4 + "½Ã" + now5 + "ºĞ" +
-				// now6 + "ÃÊ";
+				// String now = now1 + "ë…„" + now2 + "ì›”" + now3 + "ì¼" + now4 + "ì‹œ" + now5 + "ë¶„" +
+				// now6 + "ì´ˆ";
 				String now = now1 + now2 + now3 + now4 + now5 + now6;
 				System.out.println(now);
 				try {
@@ -115,7 +115,7 @@ public class ProductDao {
 					// System.out.println(date);
 					product.setDate(date);
 
-					DateFormat format2 = new SimpleDateFormat("yyyy³âMM¿ùddÀÏHH½ÃmmºĞssÃÊ");
+					DateFormat format2 = new SimpleDateFormat("yyyyë…„MMì›”ddì¼HHì‹œmmë¶„ssì´ˆ");
 					String nowString = format2.format(date);
 					product.setNowString(nowString);
 
@@ -124,16 +124,16 @@ public class ProductDao {
 					e.printStackTrace();
 				}
 
-				// inday date Çüº¯È¯
+				// inday date í˜•ë³€í™˜
 				String inday = new String(rs.getString("inday"));
 				String[] inday_date = inday.split("_");
 
-				String in1 = inday_date[0]; // ³â
-				String in2 = inday_date[1]; // ¿ù
-				String in3 = inday_date[2]; // ÀÏ
-				String in4 = inday_date[3]; // ½Ã
-				String in5 = inday_date[4]; // ºĞ
-				String in6 = inday_date[5]; // ÃÊ
+				String in1 = inday_date[0]; // ë…„
+				String in2 = inday_date[1]; // ì›”
+				String in3 = inday_date[2]; // ì¼
+				String in4 = inday_date[3]; // ì‹œ
+				String in5 = inday_date[4]; // ë¶„
+				String in6 = inday_date[5]; // ì´ˆ
 
 				if (in2.length() == 1) {
 					in2 = 0 + in2;
@@ -150,8 +150,8 @@ public class ProductDao {
 				if (in6.length() == 1) {
 					in6 = 0 + in6;
 				}
-				// String now = now1 + "³â" + now2 + "¿ù" + now3 + "ÀÏ" + now4 + "½Ã" + now5 + "ºĞ" +
-				// now6 + "ÃÊ";
+				// String now = now1 + "ë…„" + now2 + "ì›”" + now3 + "ì¼" + now4 + "ì‹œ" + now5 + "ë¶„" +
+				// now6 + "ì´ˆ";
 				String in = in1 + in2 + in3 + in4 + in5 + in6;
 				System.out.println(in);
 				try {
@@ -159,7 +159,7 @@ public class ProductDao {
 					Date indate = format.parse(in);
 					product.setIndate(indate);
 
-					DateFormat format2 = new SimpleDateFormat("yyyy³âMM¿ùddÀÏHH½ÃmmºĞssÃÊ");
+					DateFormat format2 = new SimpleDateFormat("yyyyë…„MMì›”ddì¼HHì‹œmmë¶„ssì´ˆ");
 					String inString = format2.format(indate);
 					product.setInString(inString);
 				} catch (ParseException e) {
@@ -167,7 +167,7 @@ public class ProductDao {
 					e.printStackTrace();
 				}
 
-				// shelfLife date·Î Çüº¯È¯
+				// shelfLife dateë¡œ í˜•ë³€í™˜
 				int shelfLife = rs.getInt("shelfLife");
 				String shelfLifeS = Integer.toString(shelfLife);
 
@@ -177,10 +177,10 @@ public class ProductDao {
 
 				try {
 					SimpleDateFormat format = new SimpleDateFormat("dd");
-					Date last = format.parse(shelfLifeS); // last´Â shelfLifeS¸¦ DATE Å¸ÀÔ
+					Date last = format.parse(shelfLifeS); // lastëŠ” shelfLifeSë¥¼ DATE íƒ€ì…
 
-					DateFormat format2 = new SimpleDateFormat("ddÀÏ");
-					String shelfLifeString = format2.format(last); // lastÀÇ date format º¯È¯
+					DateFormat format2 = new SimpleDateFormat("ddì¼");
+					String shelfLifeString = format2.format(last); // lastì˜ date format ë³€í™˜
 					product.setShelfLifeString(shelfLifeString);
 				} catch (ParseException e) {
 
@@ -188,38 +188,38 @@ public class ProductDao {
 				}
 				
 
-				// photoID - inday Áï, date-indate
+				// photoID - inday ì¦‰, date-indate
 				try {
 					SimpleDateFormat format = new SimpleDateFormat("yyyyMMddHHmmss");
 					Date indate = format.parse(in);
 					Date date = format.parse(now);
-					//¿ø·¡ Á¹ÀÛ ºÎºĞ
+					//ì›ë˜ ì¡¸ì‘ ë¶€ë¶„
 					//long diff = indate.getTime() - date.getTime();
 					
-					//¼ö½Ä ¼öÁ¤ ºÎºĞ
+					//ìˆ˜ì‹ ìˆ˜ì • ë¶€ë¶„
 					long diff =  date.getTime() - indate.getTime() ;
-					long diffDays = diff/(24*60*60*1000); //24½Ã°£.60ºĞ 60ÃÊ 1000ºĞÀÇ1
+					long diffDays = diff/(24*60*60*1000); //24ì‹œê°„.60ë¶„ 60ì´ˆ 1000ë¶„ì˜1
 					
 					//String diff2 = String.valueOf(diff);
 					//product.setDiff2(diff2);
 					
-					System.out.println("³¯Â¥Â÷ÀÌ"+diffDays);
+					System.out.println("ë‚ ì§œì°¨ì´"+diffDays);
 					product.setDiffDays(diffDays);
 					
-					//last - diff : diff¸¦ dateÅ¸ÀÔÀ¸·Î ¹Ù²ã¼­
+					//last - diff : diffë¥¼ dateíƒ€ì…ìœ¼ë¡œ ë°”ê¿”ì„œ
 					int diff2 = (int) (diffDays);
 					product.setDiff2(diff2);
 					
 					
 					int realShelf = shelfLife - diff2;
 					product.setRealShelf(realShelf);
-					System.out.println("Å×½ºÆ®"+realShelf);
+					System.out.println("í…ŒìŠ¤íŠ¸"+realShelf);
 				} catch (ParseException e) {
 
 					e.printStackTrace();
 				}
 				
-				// inday + shelfLife  Áï, indate + last
+				// inday + shelfLife  ì¦‰, indate + last
 				
 				try {
 					String finish = null;
@@ -235,16 +235,16 @@ public class ProductDao {
 					
 					cal.add(Calendar.DATE, shelfLife);
 					
-					finish = format.format(cal.getTime()); // finish´Â String Å¸ÀÔ
+					finish = format.format(cal.getTime()); // finishëŠ” String íƒ€ì…
 					System.out.println(finish); 
 					
 					SimpleDateFormat format2 = new SimpleDateFormat("yyyyMMddHHmmss");
 					Date finish2 = format2.parse(finish); 
 					product.setFinish2(finish2);
 
-					DateFormat format3 = new SimpleDateFormat("yyyy³âMM¿ùddÀÏHH½ÃmmºĞssÃÊ");
+					DateFormat format3 = new SimpleDateFormat("yyyyë…„MMì›”ddì¼HHì‹œmmë¶„ssì´ˆ");
 					String finish3 = format3.format(finish2);
-					product.setFinish3(finish3); //ÃÖÁ¾
+					product.setFinish3(finish3); //ìµœì¢…
 				
 				} catch (ParseException e) {
 

@@ -1,3 +1,4 @@
+/*
 package kr.ac.hansung.cse.dao;
 
 import java.sql.ResultSet;
@@ -58,3 +59,4 @@ public class RegisterDao {
    }
 
 }
+*/

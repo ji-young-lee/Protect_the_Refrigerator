@@ -9,10 +9,10 @@ import kr.ac.hansung.cse.dao.ProductDao;
 import kr.ac.hansung.cse.model.Product;
 
 @Service
-public class ProductService { // service-context.xmlÀÌ ºÒ¸®¸é service ÆĞÅ°Áö¸¦ Âß ½ºÄµÇØ¼­ @ServiceÀÇ Å¬·¡½º¸¦ ºóÀ¸·Î µî·Ï. ÃßÈÄ¿¡ ÄÁÆ®·Ñ·¯
-								// @Autowired¿¡ ÀÇÁ¸¼ºÁÖÀÔÀÌµÇ´Â ±×·± ¾ç»ó
+public class ProductService { // service-context.xmlì´ ë¶ˆë¦¬ë©´ service íŒ¨í‚¤ì§€ë¥¼ ì­‰ ìŠ¤ìº”í•´ì„œ @Serviceì˜ í´ë˜ìŠ¤ë¥¼ ë¹ˆìœ¼ë¡œ ë“±ë¡. ì¶”í›„ì— ì»¨íŠ¸ë¡¤ëŸ¬
+								// @Autowiredì— ì˜ì¡´ì„±ì£¼ì…ì´ë˜ëŠ” ê·¸ëŸ° ì–‘ìƒ
 
-	@Autowired // ProductService´Â Dao¸¦ ÀÇÁ¸¼º ÁÖÀÔÇØ¼­ ¹Ş°í
+	@Autowired // ProductServiceëŠ” Daoë¥¼ ì˜ì¡´ì„± ì£¼ì…í•´ì„œ ë°›ê³ 
 	private ProductDao productDao;
 
 	/*
@@ -23,12 +23,12 @@ public class ProductService { // service-context.xmlÀÌ ºÒ¸®¸é service ÆĞÅ°Áö¸¦ Â
 
 	public List<Product> getProducts() {
 
-		return productDao.getProducts(); // daoÈ°¿ëÇØ¼­ getProducts()¶ó´Â ¸Ş¼Òµå È£ÃâÇØ¼­ ¸®ÅÏ
+		return productDao.getProducts(); // daoí™œìš©í•´ì„œ getProducts()ë¼ëŠ” ë©”ì†Œë“œ í˜¸ì¶œí•´ì„œ ë¦¬í„´
 	}
 
 	public List<Product> getPhoto() {
 
-		return productDao.getPhoto(); // daoÈ°¿ëÇØ¼­ getProducts()¶ó´Â ¸Ş¼Òµå È£ÃâÇØ¼­ ¸®ÅÏ
+		return productDao.getPhoto(); // daoí™œìš©í•´ì„œ getProducts()ë¼ëŠ” ë©”ì†Œë“œ í˜¸ì¶œí•´ì„œ ë¦¬í„´
 	}
 
 	/*

@@ -14,21 +14,21 @@ import kr.ac.hansung.cse.service.MemberService;
 
 @Controller
 
-@RequestMapping("/logins/*") //URL¿¡ signup¶ó´Â ¿äÃ»ÀÌ µé¾î¿À¸é ¹«Á¶°Ç MemberController.javaÀ¸·Î º¸³»°Ú´Ù.
+@RequestMapping("/logins/*") //URLì— signupë¼ëŠ” ìš”ì²­ì´ ë“¤ì–´ì˜¤ë©´ ë¬´ì¡°ê±´ MemberController.javaìœ¼ë¡œ ë³´ë‚´ê² ë‹¤.
 public class MemberController {
 private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
 	
 	@Inject
 	MemberService service;
 	
-	// È¸¿ø°¡ÀÔ get
+	// íšŒì›ê°€ì… get
 	@RequestMapping(value = "/signup", method = RequestMethod.GET)
 	public String getSignup() throws Exception {
 		logger.info("get sign up");
 		return "signup";
 	}
 	
-	// È¸¿ø°¡ÀÔ post
+	// íšŒì›ê°€ì… post
 	@RequestMapping(value = "/signup", method = RequestMethod.POST)
 	public void postSignup(Member vo) throws Exception {
 		logger.info("post sign up");

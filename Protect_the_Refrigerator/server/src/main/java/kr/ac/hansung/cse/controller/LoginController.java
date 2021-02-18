@@ -9,20 +9,20 @@ import org.springframework.web.servlet.ModelAndView;
 //RequestMapping("user/*")
 public class LoginController {
 
-	@RequestMapping("/logins") //requestmappingÀ¸·Î ÀÇÇØ¼­ /product¶ó°íÇÏ´Â url·Î µé¾î¿À´Â request°¡ µé¾î¿À°ÔµÇ¸é ÀÌ ¸Ş¼Òµå°¡ ¼öÇàµÊ
+	@RequestMapping("/logins") //requestmappingìœ¼ë¡œ ì˜í•´ì„œ /productë¼ê³ í•˜ëŠ” urlë¡œ ë“¤ì–´ì˜¤ëŠ” requestê°€ ë“¤ì–´ì˜¤ê²Œë˜ë©´ ì´ ë©”ì†Œë“œê°€ ìˆ˜í–‰ë¨
 	public String login() {
 		
-		return "logins"; //view's logical name. products.jspÆÄÀÏ·Î ³Ñ°ÜÁÖ¸é µÇ¸éÀº ÀÌ ºä¿¡¼­ ¸ğµ¨·Î ÀúÀåµÈ productsÀÇ °ªÀ» Ãâ·ÂÇØÁÖ¸éµÊ
+		return "logins"; //view's logical name. products.jspíŒŒì¼ë¡œ ë„˜ê²¨ì£¼ë©´ ë˜ë©´ì€ ì´ ë·°ì—ì„œ ëª¨ë¸ë¡œ ì €ì¥ëœ productsì˜ ê°’ì„ ì¶œë ¥í•´ì£¼ë©´ë¨
 	}
 	
 	
 	/*
-	 * @RequestMapping(value="/logins", method=RequestMethod.GET) //requestmappingÀ¸·Î
-	 * ÀÇÇØ¼­ /product¶ó°íÇÏ´Â url·Î µé¾î¿À´Â request°¡ µé¾î¿À°ÔµÇ¸é ÀÌ ¸Ş¼Òµå°¡ ¼öÇàµÊ public ModelAndView
+	 * @RequestMapping(value="/logins", method=RequestMethod.GET) //requestmappingìœ¼ë¡œ
+	 * ì˜í•´ì„œ /productë¼ê³ í•˜ëŠ” urlë¡œ ë“¤ì–´ì˜¤ëŠ” requestê°€ ë“¤ì–´ì˜¤ê²Œë˜ë©´ ì´ ë©”ì†Œë“œê°€ ìˆ˜í–‰ë¨ public ModelAndView
 	 * login(){ ModelAndView mav = new ModelAndView();
 	 * 
-	 * return mav; //view's logical name. products.jspÆÄÀÏ·Î ³Ñ°ÜÁÖ¸é µÇ¸éÀº ÀÌ ºä¿¡¼­ ¸ğµ¨·Î ÀúÀåµÈ
-	 * productsÀÇ °ªÀ» Ãâ·ÂÇØÁÖ¸éµÊ }
+	 * return mav; //view's logical name. products.jspíŒŒì¼ë¡œ ë„˜ê²¨ì£¼ë©´ ë˜ë©´ì€ ì´ ë·°ì—ì„œ ëª¨ë¸ë¡œ ì €ì¥ëœ
+	 * productsì˜ ê°’ì„ ì¶œë ¥í•´ì£¼ë©´ë¨ }
 	 */
 	
 	

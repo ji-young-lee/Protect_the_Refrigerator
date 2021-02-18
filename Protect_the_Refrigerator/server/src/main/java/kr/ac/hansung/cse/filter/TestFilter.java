@@ -35,10 +35,10 @@ public class TestFilter implements Filter {
 	 * @see Filter#doFilter(ServletRequest, ServletResponse, FilterChain)
 	 */
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-		//request¿¡ »ç¿ëÀÚ°¡ ¿äÃ»ÇÑ urlÀÇ Á¤º¸°¡ ´ã±ä´Ù.
+		//requestì— ì‚¬ìš©ìê°€ ìš”ì²­í•œ urlì˜ ì •ë³´ê°€ ë‹´ê¸´ë‹¤.
 		
-		System.out.println( ( (HttpServletRequest)request).getRequestURL() ); //HttpServletRequest´ÂÅ¸ÀÔÀÌ´Ù. ServletRequest¸¦ extend¸¦ ÇÑ ÀÎÅÍÆäÀÌ½º
-		//getRequestURL()´Â »ç¿ëÀÚ°¡ ¿äÃ»ÇÑ Á¤º¸ÀÇ URL ÂïÀ½(ÄÜ¼Ö¿¡)
+		System.out.println( ( (HttpServletRequest)request).getRequestURL() ); //HttpServletRequestëŠ”íƒ€ì…ì´ë‹¤. ServletRequestë¥¼ extendë¥¼ í•œ ì¸í„°í˜ì´ìŠ¤
+		//getRequestURL()ëŠ” ì‚¬ìš©ìê°€ ìš”ì²­í•œ ì •ë³´ì˜ URL ì°ìŒ(ì½˜ì†”ì—)
 		
 		// pass the request along the filter chain
 		chain.doFilter(request, response);

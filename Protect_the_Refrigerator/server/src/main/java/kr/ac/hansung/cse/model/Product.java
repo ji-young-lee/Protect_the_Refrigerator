@@ -6,16 +6,16 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
-//DB Á¶È¸<À¥ÇÁ2 µ¿¿µ»ó 2-2ÂüÁ¶>
+//DB ì¡°íšŒ<ì›¹í”„2 ë™ì˜ìƒ 2-2ì°¸ì¡°>
 
 @ToString
 @Getter
 @Setter
 public class Product {
 
-	private String photoID; //»çÁø ÂïÀº ½Ã°£
-	private Date date; //photoID¸¦ DATE·Î Çüº¯È¯½Ã
-	private String nowString; // date¸¦ ³â,¿ù·Î format
+	private String photoID; //ì‚¬ì§„ ì°ì€ ì‹œê°„
+	private Date date; //photoIDë¥¼ DATEë¡œ í˜•ë³€í™˜ì‹œ
+	private String nowString; // dateë¥¼ ë…„,ì›”ë¡œ format
 	
 	private String cameraID;
 
@@ -29,22 +29,22 @@ public class Product {
 	
 	private int shelfLife;
 	private String shelfLifeS; //int type shelfLife -> String type 
-	private Date last; //shelfLifeSÀÇ DATE º¯È¯
-	private String shelfLifeString; //lastÀÇ date format º¯È¯(ÀÏ)
+	private Date last; //shelfLifeSì˜ DATE ë³€í™˜
+	private String shelfLifeString; //lastì˜ date format ë³€í™˜(ì¼)
 
-	//inday´Â À½½ÄÀ» ³ÖÀº ½Ã°£ , photoID´Â »çÁøÂïÀº ½Ã°£ÀÌ´Ï inday°¡ °ú°Å. °í·Î ¼ıÀÚ´Â photoID°¡ ´õ Å©´Ï 'photoID - inday'°¡ ¿ÇÀº°Í. 'inday-photoID'´Â Àß¸øµÈ ¼ö½Ä
-	private long diffDays;  //  date - indate  (Áï, photoID - inday )
+	//indayëŠ” ìŒì‹ì„ ë„£ì€ ì‹œê°„ , photoIDëŠ” ì‚¬ì§„ì°ì€ ì‹œê°„ì´ë‹ˆ indayê°€ ê³¼ê±°. ê³ ë¡œ ìˆ«ìëŠ” photoIDê°€ ë” í¬ë‹ˆ 'photoID - inday'ê°€ ì˜³ì€ê²ƒ. 'inday-photoID'ëŠ” ì˜ëª»ëœ ìˆ˜ì‹
+	private long diffDays;  //  date - indate  (ì¦‰, photoID - inday )
 	private long diff; // date.getTime() - indate.getTime() ;
-	private int diff2; //longÅ¸ÀÔ diff¸¦ stringÅ¸ÀÔº¯È¯
-	private int realShelf; //shelfLife - diff : ÃÖÁ¾ ³²Àº ÀÏ¼ö  ( shelfLife - (photoID - inday))
+	private int diff2; //longíƒ€ì… diffë¥¼ stringíƒ€ì…ë³€í™˜
+	private int realShelf; //shelfLife - diff : ìµœì¢… ë‚¨ì€ ì¼ìˆ˜  ( shelfLife - (photoID - inday))
 	
-	private String inday; //³ÃÀå°í¿¡ À½½Ä ³ÖÀº ½Ã°£
-	private Date indate; //inday¸¦ date Çüº¯È¯
-	private String inString; //inday¸¦ DATE·Î Çüº¯È¯ -> ³â¿ù ºÙ¿©¼­ StringÀ¸·Î 
+	private String inday; //ëƒ‰ì¥ê³ ì— ìŒì‹ ë„£ì€ ì‹œê°„
+	private Date indate; //indayë¥¼ date í˜•ë³€í™˜
+	private String inString; //indayë¥¼ DATEë¡œ í˜•ë³€í™˜ -> ë…„ì›” ë¶™ì—¬ì„œ Stringìœ¼ë¡œ 
 	
-	private String finish; // indate + shelfLife STRING Çü
-	private Date finish2; // finishÀÇ dateÇü
-	private String finish3; //finish2¿¡ ³â¿ù »ğÀÔ
+	private String finish; // indate + shelfLife STRING í˜•
+	private Date finish2; // finishì˜ dateí˜•
+	private String finish3; //finish2ì— ë…„ì›” ì‚½ì…
 	
 
 	// private MultipartFile data;

@@ -56,7 +56,7 @@ public class RecipeController {
 	 * "detailTotalRecipe"; }
 	 */
 
-	// ¸Ş¼Òµå ¾ø´Â detailTotalRecipe
+	// ë©”ì†Œë“œ ì—†ëŠ” detailTotalRecipe
 
 	@RequestMapping("/totalRecipe/detailTotalRecipe/{recipeName}")
 	public String getDetailRecipes(@PathVariable String recipeName, Model model) {
@@ -105,11 +105,11 @@ public class RecipeController {
 	@RequestMapping(value = "/totalRecipe/detailTotalRecipe/scoreRegist/{recipeName}", method = RequestMethod.POST)
 	public String getScoresPost(@ModelAttribute("recipe") Recipe recipe, @PathVariable String recipeName) {
 
-		System.out.println(recipe); // console¿¡ ÂïÈ÷´Â ºÎºĞ
+		System.out.println(recipe); // consoleì— ì°íˆëŠ” ë¶€ë¶„
 		
-		// ½ÇÁ¦·Î db¿¡ ¹İ¿µµÇ´Â ºÎºĞ
-		 if (!recipeService.getScores(recipe)) // ÀÌ°Å ÀÛ¼ºÇÏ°í
-		// recipeService.java¿¡¼­getScores¸Ş¼Òµå ¸¸µé¾îÁÜ
+		// ì‹¤ì œë¡œ dbì— ë°˜ì˜ë˜ëŠ” ë¶€ë¶„
+		 if (!recipeService.getScores(recipe)) // ì´ê±° ì‘ì„±í•˜ê³ 
+		// recipeService.javaì—ì„œgetScoresë©”ì†Œë“œ ë§Œë“¤ì–´ì¤Œ
 		 System.out.println("regist score cannot be done");
 
 		return "redirect:/totalRecipe/detailTotalRecipe/{recipeName}";
